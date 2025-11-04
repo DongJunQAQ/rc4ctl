@@ -20,7 +20,7 @@ func init() {
 }
 
 // runEncrypt 执行加密逻辑
-func runEncrypt(myCmd *cobra.Command, args []string) {
+func runEncrypt(_ *cobra.Command, args []string) {
 	inputPath := args[0] // 位置参数：输入图片路径
 	outputPath := cmd.OutputFlag
 	key := cmd.KeyFlag
