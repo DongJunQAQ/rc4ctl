@@ -2,14 +2,10 @@ package internal
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
-	"rc4img/cmd"
 )
 
-func processCrypt(args []string, operation string) { // 加/解密共用的处理函数
+func ProcessCrypt(args []string, operation string, outputPath string, key string) { // 加/解密共用的处理函数
 	inputPath := args[0]
-	outputPath := cmd.OutputFlag
-	key := cmd.KeyFlag
 	// 读取文件
 	data, err := readFile(inputPath)
 	if err != nil {
@@ -24,12 +20,4 @@ func processCrypt(args []string, operation string) { // 加/解密共用的处�
 		return
 	}
 	fmt.Printf("%s成功！\n输入：%s\n输出：%s\n", operation, inputPath, outputPath)
-}
-
-func runEncrypt(_ *cobra.Command, args []string) { // 加密命令实现
-	processCrypt(args, "加密")
-}
-
-func runDecrypt(_ *cobra.Command, args []string) { // 解密命令实现
-	processCrypt(args, "解密")
 }

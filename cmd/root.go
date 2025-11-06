@@ -5,6 +5,21 @@ import (
 	"os"
 )
 
+// 全局参数：所有子命令共用的「密钥」和「输出文件路径」
+var (
+	keyFlag    string // -k/--key 密钥
+	outputFlag string // -o/--output 输出文件路径
+)
+
+func init() {
+	// 为根命令绑定全局参数（所有子命令自动继承）
+	RootCmd.PersistentFlags().StringVarP(&keyFlag, "key", "k", "", "加解密密钥（必填）")
+	RootCmd.PersistentFlags().StringVarP(&outputFlag, "output", "o", "", "输出文件路径（必填）")
+	// 标记参数为必填，未传则报错
+	_ = RootCmd.MarkPersistentFlagRequired("key")
+	_ = RootCmd.MarkPersistentFlagRequired("output")
+}
+
 // RootCmd 是所有子命令的基础根命令
 var RootCmd = &cobra.Command{
 	Use:   "rc4img",
@@ -18,19 +33,4 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
-}
-
-// 全局参数：所有子命令共用的「密钥」和「输出文件路径」
-var (
-	KeyFlag    string // -k/--key 密钥
-	OutputFlag string // -o/--output 输出文件路径
-)
-
-func init() {
-	// 为根命令绑定全局参数（所有子命令自动继承）
-	RootCmd.PersistentFlags().StringVarP(&KeyFlag, "key", "k", "", "加解密密钥（必填）")
-	RootCmd.PersistentFlags().StringVarP(&OutputFlag, "output", "o", "", "输出文件路径（必填）")
-	// 标记参数为必填，未传则报错
-	_ = RootCmd.MarkPersistentFlagRequired("key")
-	_ = RootCmd.MarkPersistentFlagRequired("output")
 }
