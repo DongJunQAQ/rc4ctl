@@ -7,6 +7,9 @@ import (
 
 func init() { // 将加密子命令添加到根命令
 	rootCmd.AddCommand(encryptCmd)
+	// 标记此子命令的flag参数为必填，未传则报错，根命令不受影响
+	_ = rootCmd.MarkPersistentFlagRequired("key")
+	_ = rootCmd.MarkPersistentFlagRequired("output")
 }
 
 var encryptCmd = &cobra.Command{ //定义加密子命令

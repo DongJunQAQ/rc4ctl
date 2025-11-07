@@ -7,6 +7,9 @@ import (
 
 func init() {
 	rootCmd.AddCommand(decryptCmd)
+	// 标记此子命令的flag参数为必填，未传则报错，根命令不受影响
+	_ = rootCmd.MarkPersistentFlagRequired("key")
+	_ = rootCmd.MarkPersistentFlagRequired("output")
 }
 
 var decryptCmd = &cobra.Command{ //定义解密子命令

@@ -15,9 +15,6 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&keyFlag, "key", "k", "", "加解密密钥（必填）") //StringVarP定义的是flag后面接的值的类型
 	//如果是BoolVarP()类型则用户使用时无需传值，只需指定参数本身即可表示true，如--debug等价于debugFlag=true；若命令中不指定此flag则为默认值（通常为false）
 	rootCmd.PersistentFlags().StringVarP(&outputFlag, "output", "o", "", "输出文件路径（必填）")
-	// 标记参数为必填，未传则报错
-	_ = rootCmd.MarkPersistentFlagRequired("key")
-	_ = rootCmd.MarkPersistentFlagRequired("output")
 }
 
 var rootCmd = &cobra.Command{ // RootCmd 是所有子命令的基础根命令
