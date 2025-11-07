@@ -33,3 +33,11 @@ func Execute() { //初始化并执行根命令
 		os.Exit(1) // 退出程序，返回状态码1（表示执行失败）
 	}
 }
+
+/*
+该项目是如何获取到flag后面的值并应用到整条命令中去的？
+1.用户输入命令（如rc4ctl encrypt input.png -o output.bin -k 123）。
+2.cobra解析命令行参数，将-k 123赋值给变量keyFlag，-o output.bin赋值给变量outputFlag。
+3.调用子命令的Run函数，传入解析后的flag值到业务逻辑函数（internal.ProcessCrypt）。
+4.最终在ProcessCrypt中使用密钥和输出路径完成加解密操作。
+*/
