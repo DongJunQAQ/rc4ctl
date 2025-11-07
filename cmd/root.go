@@ -21,9 +21,10 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{ // RootCmd 是所有子命令的基础根命令
-	Use:   "rc4ctl",                                          // 命令名称，在终端中使用时的指令（如./rc4img）
-	Short: "RC4算法图片加解密工具",                                    // 短描述
-	Long:  `基于RC4对称加密算法，对JPG/PNG/GIF等图片文件进行加密和解密，加密解密使用相同密钥`, //长描述
+	Use:     "rc4ctl",                                          // 命令名称，在终端中使用时的指令（如./rc4img）
+	Short:   "RC4算法图片加解密工具",                                    // 短描述
+	Long:    `基于RC4对称加密算法，对JPG/PNG/GIF等图片文件进行加密和解密，加密解密使用相同密钥`, //长描述
+	Version: "0.1.0",                                           //添加此工具的版本信息
 }
 
 func Execute() { //初始化并执行根命令
