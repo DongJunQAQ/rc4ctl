@@ -1,11 +1,13 @@
 # rc4ctl
 一个基于 Go 语言和 RC4 对称加密算法开发的命令行工具（rc4ctl），支持通过 `encrypt` 和 `decrypt` 子命令对文件进行加解密操作，需指定输入文件路径、输出文件路径（-o/--output）和密钥（-k/--key），适用于对图片等文件进行简单的加解密操作。
 
+
+
 ## 构建：
 
 - 编译项目生成二进制文件：
 
-```shell
+```
 [root@ecs-1622 rc4ctl-master]# make
 Start compiling this project on the  platform...
 go build -o ./bin/rc4ctl ./main.go
@@ -23,7 +25,7 @@ rc4ctl version 0.1.0
 
 - 清除编译产物：
 
-```shell
+```
 [root@ecs-1622 rc4ctl-master]# make clean
 Cleaning compilation artifacts...
 rm -rf ./bin
@@ -56,7 +58,7 @@ Cleanup completed
 
 ## 使用指南：
 
-```shell
+```
 [root@ecs-1622 bin]# ./rc4ctl -h
 基于RC4对称加密算法，对JPG/PNG/GIF等图片文件进行加密和解密，加密解密使用相同密钥
 
@@ -80,7 +82,7 @@ Use "rc4ctl [command] --help" for more information about a command.
 
 子命令用法：
 
-```shell
+```
 [root@ecs-1622 bin]# ./rc4ctl encrypt -h
 将指定图片文件通过RC4算法加密，输出为不可直接查看的文件（需用decrypt子命令解密）
 
@@ -95,9 +97,12 @@ Global Flags:
   -o, --output string   输出文件路径（必填）
 ```
 
-## 命令补全：
 
-```shell
+
+## 命令自动补全：
 
 ```
+[root@ecs-1622 bin]# ./rc4ctl completion bash > /etc/bash_completion.d/rc4ctl
+```
 
+ 执行完此命令后重新进入bash即可享受命令自动补全功能；
